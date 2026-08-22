@@ -1,0 +1,6 @@
+{
+  "name": "Dayflow — HRMS",
+  "description": "A production-grade Human Resource Management System with separate Employee and HR Admin portals, live attendance check-in/out, leave approvals, salary slips, document vault, real-time sync, and analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

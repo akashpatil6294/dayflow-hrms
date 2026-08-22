@@ -1,0 +1,227 @@
+@import "tailwindcss";
+
+/* Tailwind v4 defaults the `dark:` variant to prefers-color-scheme media
+   query. Dayflow's toggle flips a `.dark` class on <html> instead, so we
+   have to tell Tailwind to key off that class — otherwise every dark:
+   utility in the app silently ignores the toggle and only follows the OS. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Dayflow — "the ledger, kept by hand"
+  An HRMS is a book of hours and pay. The palette is warm ink-on-paper
+  neutrals (not a tinted "AI gray") with a small set of saturated,
+  fashion-editorial accents doing the semantic work — a jewel green, a
+  mustard gold, a hot coral, cobalt, magenta-plum, teal. Status marks
+  read like a rubber stamp a clerk actually pressed: never perfectly
+  aligned, never twice the same. A handwritten face appears exactly
+  once per screen, the way a person signs off on a real page.
+*/
+
+@theme {
+  /* warm ink-to-paper neutral — genuinely neutral, not color-tinted */
+  --color-slate-50: #f8f7f7;
+  --color-slate-100: #eeedec;
+  --color-slate-200: #d9d7d3;
+  --color-slate-300: #bbb7af;
+  --color-slate-400: #9a9489;
+  --color-slate-500: #7c756a;
+  --color-slate-600: #666057;
+  --color-slate-700: #4f4b45;
+  --color-slate-800: #3b3935;
+  --color-slate-900: #2b2927;
+  --color-slate-950: #1b1a18;
+
+  /* jewel green — present / approved / active / success */
+  --color-emerald-50: #f6f9f7;
+  --color-emerald-100: #e8f3ee;
+  --color-emerald-200: #c1ecd8;
+  --color-emerald-300: #8edcb8;
+  --color-emerald-400: #58cb95;
+  --color-emerald-500: #2cba77;
+  --color-emerald-600: #249962;
+  --color-emerald-700: #1c784d;
+  --color-emerald-800: #155b3a;
+  --color-emerald-900: #10422a;
+  --color-emerald-950: #0a291b;
+
+  /* mustard gold — pending / half day */
+  --color-amber-50: #f9f8f6;
+  --color-amber-100: #f3efe7;
+  --color-amber-200: #eeddbf;
+  --color-amber-300: #e0c28a;
+  --color-amber-400: #d1a452;
+  --color-amber-500: #c18a25;
+  --color-amber-600: #9f721e;
+  --color-amber-700: #7c5918;
+  --color-amber-800: #5e4412;
+  --color-amber-900: #45310d;
+  --color-amber-950: #2b1f08;
+
+  /* hot coral — absent / rejected / danger */
+  --color-rose-50: #f9f6f6;
+  --color-rose-100: #f3e9e7;
+  --color-rose-200: #eec7bf;
+  --color-rose-300: #e09a8a;
+  --color-rose-400: #d16952;
+  --color-rose-500: #c14125;
+  --color-rose-600: #9f361e;
+  --color-rose-700: #7c2a18;
+  --color-rose-800: #5e2012;
+  --color-rose-900: #45170d;
+  --color-rose-950: #2b0f08;
+
+  /* cobalt — leave */
+  --color-indigo-50: #f6f7f9;
+  --color-indigo-100: #e9ebf1;
+  --color-indigo-200: #c6cde7;
+  --color-indigo-300: #97a5d3;
+  --color-indigo-400: #6579be;
+  --color-indigo-500: #3c55aa;
+  --color-indigo-600: #31468c;
+  --color-indigo-700: #26376d;
+  --color-indigo-800: #1d2a53;
+  --color-indigo-900: #151e3c;
+  --color-indigo-950: #0d1326;
+
+  /* magenta-plum — admin */
+  --color-purple-50: #f9f6f8;
+  --color-purple-100: #f1e9f0;
+  --color-purple-200: #e7c6e0;
+  --color-purple-300: #d397c7;
+  --color-purple-400: #be65ac;
+  --color-purple-500: #aa3c94;
+  --color-purple-600: #8c317a;
+  --color-purple-700: #6d265f;
+  --color-purple-800: #531d48;
+  --color-purple-900: #3c1535;
+  --color-purple-950: #260d21;
+
+  /* teal — employee */
+  --color-blue-50: #f6f8f9;
+  --color-blue-100: #e9f0f1;
+  --color-blue-200: #c6e1e6;
+  --color-blue-300: #98c9d2;
+  --color-blue-400: #66afbc;
+  --color-blue-500: #3e98a8;
+  --color-blue-600: #337d8a;
+  --color-blue-700: #28626c;
+  --color-blue-800: #1e4a52;
+  --color-blue-900: #16363c;
+  --color-blue-950: #0e2225;
+
+  --color-white: #fdfcfa;
+
+  /* crisp, slightly-imperfect corners — a card, not a chip */
+  --radius-md: 0.25rem;
+  --radius-lg: 0.3rem;
+  --radius-xl: 0.4rem;
+  --radius-2xl: 0.6rem;
+
+  --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Fraunces', 'IBM Plex Sans', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-hand: 'Caveat', cursive;
+}
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: #f6f4f0;
+    color: #24211d;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* a faint, uneven paper grain instead of a machine-perfect ruled grid —
+       real ledger paper is never that clean */
+    background-image:
+      radial-gradient(circle at 22% 8%, rgba(0,0,0,0.025) 0, transparent 45%),
+      radial-gradient(circle at 78% 62%, rgba(0,0,0,0.02) 0, transparent 40%),
+      linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px);
+    background-size: auto, auto, 100% 2.1rem;
+  }
+
+  .dark body {
+    background-color: #16140f;
+    color: #f2efe9;
+    background-image:
+      radial-gradient(circle at 22% 8%, rgba(255,255,255,0.02) 0, transparent 45%),
+      radial-gradient(circle at 78% 62%, rgba(255,255,255,0.015) 0, transparent 40%),
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size: auto, auto, 100% 2.1rem;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  /* tabular figures wherever numbers matter: hours, currency, ids */
+  .tabular,
+  .font-mono {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Crisp custom scrollbar for dense data tables and sidebars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 117, 106, 0.4);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(79, 75, 69, 0.6);
+}
+
+/* Stamp — the signature element. Status marks read like a clerk's rubber
+   stamp: bordered, inked in place, set slightly off the grid, never quite
+   the same twice. */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border-width: 1.5px;
+  border-style: solid;
+  border-radius: 3px;
+  transform: rotate(var(--stamp-tilt, -1.4deg));
+  white-space: nowrap;
+}
+
+/* A hand note — used once per screen at most, the way a person actually
+   signs or annotates a page, never as a running typeface. */
+.hand-note {
+  font-family: var(--font-hand);
+  font-weight: 600;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
